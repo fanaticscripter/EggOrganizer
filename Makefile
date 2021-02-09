@@ -15,6 +15,8 @@ dist:
 
 darwin:
 	GOOS=darwin GOARCH=amd64 GOFLAGS=-trimpath go build -ldflags="-s -w" -o dist/EggOrganizer/EggOrganizer
+	upx dist/EggOrganizer/EggOrganizer
 
 windows:
 	GOOS=windows GOARCH=amd64 GOFLAGS=-trimpath go build -ldflags="-s -w" -o dist/EggOrganizer/EggOrganizer.exe
+	upx dist/EggOrganizer/EggOrganizer.exe

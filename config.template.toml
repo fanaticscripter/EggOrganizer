@@ -1,0 +1,16 @@
+# Players are set in this config file.
+#
+# Each player should be configured with format shown in examples below (remove
+# leading #s). user_id is required, while nickname is optional. To add a player,
+# add another [[players]] block.
+#
+# Lines beginning with # are ignored. More about the TOML format:
+# https://toml.io/
+
+#[[players]]
+#user_id = "EI1234567890123456"
+#nickname = "Alice"
+
+#[[players]]
+#user_id = "EI99876543210987654"
+#nickname = "Bob"

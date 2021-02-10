@@ -26,7 +26,10 @@ const (
 	Done
 )
 
-var _statusHideDone bool
+var (
+	_statusHideDone bool
+	_statusNoId     bool
+)
 
 var _statusCommand = &cobra.Command{
 	Use:     "status <contract-id>",
@@ -90,6 +93,11 @@ var _statusCommand = &cobra.Command{
 				})
 			}
 		}
+		if _statusNoId {
+			for i, row := range table {
+				table[i] = row[1:]
+			}
+		}
 		util.PrintTable(table)
 
 		return nil
@@ -100,6 +108,8 @@ func init() {
 	_rootCmd.AddCommand(_statusCommand)
 	_statusCommand.Flags().BoolVarP(&_statusHideDone, "hide-done", "H", false,
 		"hide players who have completed this contract")
+	_statusCommand.Flags().BoolVarP(&_statusNoId, "no-id", "n", false,
+		"do not print the User ID column")
 }
 
 func retrieveContractStatus(contractId, userId string) contractStatus {

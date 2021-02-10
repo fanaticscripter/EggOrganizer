@@ -89,3 +89,9 @@ Features and invocations
   Use the -H, --hide-done flag to hide players who have completed the contract, e.g.
 
       EggOrganizer status -H space-tourism
+
+  Use the -n, --no-id flag to remove the User ID column from output, useful for privacy-preservation when publishing the output:
+
+      EggOrganizer status -n space-tourism
+
+  Flags can be combined.

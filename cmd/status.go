@@ -27,8 +27,9 @@ const (
 )
 
 var (
-	_statusHideDone bool
-	_statusNoId     bool
+	_statusHideDone    bool
+	_statusNoId        bool
+	_statusMaskIdChars int
 )
 
 var _statusCommand = &cobra.Command{
@@ -86,8 +87,14 @@ var _statusCommand = &cobra.Command{
 		})
 		for _, res := range results {
 			if !_statusHideDone || res.status != Done {
+				userId := res.player.UserId
+				if len(userId) <= _statusMaskIdChars {
+					userId = strings.Repeat("X", len(userId))
+				} else {
+					userId = userId[:len(userId)-_statusMaskIdChars] + strings.Repeat("X", _statusMaskIdChars)
+				}
 				table = append(table, []string{
-					res.player.UserId,
+					userId,
 					res.player.Nickname,
 					res.status.String(),
 				})
@@ -110,6 +117,10 @@ func init() {
 		"hide players who have completed this contract")
 	_statusCommand.Flags().BoolVarP(&_statusNoId, "no-id", "n", false,
 		"do not print the User ID column")
+	_statusCommand.Flags().IntVarP(&_statusMaskIdChars, "mask-id", "m", 0,
+		"mask the last specified number of charaters in user IDs; "+
+			"10 if the flag is used without a value")
+	_statusCommand.Flags().Lookup("mask-id").NoOptDefVal = "10"
 }
 
 func retrieveContractStatus(contractId, userId string) contractStatus {

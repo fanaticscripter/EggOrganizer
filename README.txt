@@ -94,4 +94,9 @@ Features and invocations
 
       EggOrganizer status -n space-tourism
 
+  Use the -m, --mask-id[=N] flag to instead mask the last N characters of IDs. If N is not specified, mask 10 characters:
+
+      EggOrganizer status -m space-tourism            # User IDs appear as EI123456XXXXXXXXXX
+      EggOrganizer status --mask-id=14 space-tourism  # User Ids appear as E12XXXXXXXXXXXXXXX
+
   Flags can be combined.

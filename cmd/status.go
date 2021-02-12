@@ -149,12 +149,7 @@ func retrieveContractStatus(contractId, userId string) contractStatus {
 			continue
 		}
 		if *contract.Contract.Identifier == contractId {
-			if contract.NumGoalsAchieved == nil {
-				log.Warnf("%s: contract %s has nil num_goals_achieved field", userId, contractId)
-				status = Attempted
-				break
-			}
-			if int(*contract.NumGoalsAchieved) < len(contract.Contract.Goals) {
+			if int(contract.GetNumGoalsAchieved()) < len(contract.Contract.Goals) {
 				status = Attempted
 			} else {
 				status = Done

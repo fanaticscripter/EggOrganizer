@@ -139,8 +139,21 @@ func retrieveContractStatus(contractId, userId string) contractStatus {
 		return Unknown
 	}
 	status := NeverAttempted
-	for _, contract := range resp.Backup.Contracts.Archive {
+	for i, contract := range resp.Backup.Contracts.Archive {
+		if contract.Contract == nil {
+			log.Warnf("%s: %d-th contract in archive has nil contract field", userId, i)
+			continue
+		}
+		if contract.Contract.Identifier == nil {
+			log.Warnf("%s: %d-th contract in archive has nil contract.identifier field", userId, i)
+			continue
+		}
 		if *contract.Contract.Identifier == contractId {
+			if contract.NumGoalsAchieved == nil {
+				log.Warnf("%s: contract %s has nil num_goals_achieved field", userId, contractId)
+				status = Attempted
+				break
+			}
 			if int(*contract.NumGoalsAchieved) < len(contract.Contract.Goals) {
 				status = Attempted
 			} else {

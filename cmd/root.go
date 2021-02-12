@@ -11,12 +11,15 @@ import (
 	"github.com/fanaticscripter/EggOrganizer/config"
 )
 
+var Version string
+
 var (
 	_verbose bool
 	_debug   bool
 	_config  *config.Config
 	_rootCmd = &cobra.Command{
-		Use: "EggOrganizer",
+		Use:     "EggOrganizer",
+		Version: getVersion(),
 	}
 )
 
@@ -71,4 +74,11 @@ func subcommandPreRunE(cmd *cobra.Command, args []string) error {
 		return err
 	}
 	return nil
+}
+
+func getVersion() string {
+	if Version != "" {
+		return Version
+	}
+	return "dev"
 }

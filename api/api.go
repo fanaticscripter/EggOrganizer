@@ -3,8 +3,6 @@ package api
 import (
 	"context"
 
-	"github.com/google/uuid"
-
 	"github.com/fanaticscripter/EggOrganizer/ei"
 )
 
@@ -18,8 +16,7 @@ func RequestFirstContactWithContext(ctx context.Context, payload *ei.EggIncFirst
 		payload.ClientVersion = &version
 	}
 	if payload.DeviceId == nil {
-		deviceId := uuid.New().String()
-		payload.DeviceId = &deviceId
+		payload.DeviceId = payload.EiUserId
 	}
 	resp := &ei.EggIncFirstContactResponse{}
 	err := RequestAuthenticatedWithContext(ctx, "/ei/first_contact", payload, resp)

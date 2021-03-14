@@ -11,7 +11,7 @@ build:
 dist:
 	echo $(VERSION)
 	mkdir -p dist/EggOrganizer
-	protoc --go_out=paths=source_relative:. ei/ei.proto aux/common.proto
+	protoc --go_out=paths=source_relative:. ei/ei.proto
 	$(MAKE) darwin windows
 	install -m644 README.md dist/EggOrganizer/README.txt
 	install -m644 config.template.toml dist/EggOrganizer/config.toml

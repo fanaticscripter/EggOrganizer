@@ -1,28 +1,28 @@
 
 
-                  ...
-              .;loooool;.
-            ,loooooooooool'
-          .loooooooooooooool.
-         ;ooooooooooooooooooo;              .cclllll;                         .;:,
-        coooooooooooooooooooooc             ,X,......                        kd''cK'
-       loooooooooooooooooooooooc            :K                              kd    kd
-      coooooooooooooooooooooooooc           c0                             cK     dx
-     :ooooooooooooooooooooooooooo;          l0                             Oo     dx                                        .
-    'ooooooooooooooooooooooooooooo.         lKcccl:      .''...    .''..' .Xc     dx            .''..'                      l.
-    ooooooooooooooooooooooooooooool         oO....     ,0l;;c0K  '0o;;cOX. X:     dk ,K'lxxc  .Oo;;cOX.  oxdxk,   'KokddO' .X' cddddxKk   .dxdxd. 'K'cdxo
-   ;ooooooooooooooooooooooooooooooo,        ok        .K:    :X  0l    ,X. K:     dk :XO'  ;  Oo    .X'      lX.  .Xd   cK .X,     .xk.  c0'   dk ;X0;  ,.
-   ooooooooooooooooooooooooooooooool        oO        ,X.    ,X..X'    'X. kd     kd :X.     .X;    .X,  .:dxkX.  .X.   ,X. X;    :0;   .Xkoodkd. :X'
-  .ooooooooooooooooooooooooooooooooo.       :K        'X'    :X..X,    ;X. :K.   .X; :X       K:    'X' :0;  ,X.  .X.   .X. 0:   xk.    'X,..     ;X.
-  .ooooooooooooooooooooooooooooooooo.       'X.        xk   .0X. oO.  .OX.  oO.  xk  ;X.      l0.  .kX' 0o .;kX.  .X.   .X' Oc .Oo       dO.   ,l ,X.
-  .ooooooooooooooooooooooooooooooooo.       .kddddddl   :dddodX.  ;dddddX.   'dddc   ;k        ,ddddoX' .col;.:dl .d    .d. l, cxddddo.   'ldddl. ,k
-   loooooooooooooooooooooooooooooooc                         ;X.       'X.                          .X'
-   .ooooooooooooooooooooooooooooooo.                         ,X.       'X.                          .X,
-    .ooooooooooooooooooooooooooool.                          cK        ;K.                          ,X.
-     .cooooooooooooooooooooooooo:                      .,...:0;  .,...:0:                     .,...;Ol
-       .coooooooooooooooooooooc.                       .;:c:,     ,:c:,.                       ,:c:,.
-         .'coooooooooooooooc'.
-             ..,;::c::;,..
+                    ...
+                .;loooool;.
+              ,loooooooooool'
+            .loooooooooooooool.
+           ;ooooooooooooooooooo;              .cclllll;                         .;:,
+          coooooooooooooooooooooc             ,X,......                        kd''cK'
+         loooooooooooooooooooooooc            :K                              kd    kd
+        coooooooooooooooooooooooooc           c0                             cK     dx
+       :ooooooooooooooooooooooooooo;          l0                             Oo     dx                                        .
+      'ooooooooooooooooooooooooooooo.         lKcccl:      .''...    .''..' .Xc     dx            .''..'                      l.
+      ooooooooooooooooooooooooooooool         oO....     ,0l;;c0K  '0o;;cOX. X:     dk ,K'lxxc  .Oo;;cOX.  oxdxk,   'KokddO' .X' cddddxKk   .dxdxd. 'K'cdxo
+     ;ooooooooooooooooooooooooooooooo,        ok        .K:    :X  0l    ,X. K:     dk :XO'  ;  Oo    .X'      lX.  .Xd   cK .X,     .xk.  c0'   dk ;X0;  ,.
+     ooooooooooooooooooooooooooooooool        oO        ,X.    ,X..X'    'X. kd     kd :X.     .X;    .X,  .:dxkX.  .X.   ,X. X;    :0;   .Xkoodkd. :X'
+    .ooooooooooooooooooooooooooooooooo.       :K        'X'    :X..X,    ;X. :K.   .X; :X       K:    'X' :0;  ,X.  .X.   .X. 0:   xk.    'X,..     ;X.
+    .ooooooooooooooooooooooooooooooooo.       'X.        xk   .0X. oO.  .OX.  oO.  xk  ;X.      l0.  .kX' 0o .;kX.  .X.   .X' Oc .Oo       dO.   ,l ,X.
+    .ooooooooooooooooooooooooooooooooo.       .kddddddl   :dddodX.  ;dddddX.   'dddc   ;k        ,ddddoX' .col;.:dl .d    .d. l, cxddddo.   'ldddl. ,k
+     loooooooooooooooooooooooooooooooc                         ;X.       'X.                          .X'
+     .ooooooooooooooooooooooooooooooo.                         ,X.       'X.                          .X,
+      .ooooooooooooooooooooooooooool.                          cK        ;K.                          ,X.
+       .cooooooooooooooooooooooooo:                      .,...:0;  .,...:0:                     .,...;Ol
+         .coooooooooooooooooooooc.                       .;:c:,     ,:c:,.                       ,:c:,.
+           .'coooooooooooooooc'.
+               ..,;::c::;,..
 
 
 Copyright (c) 2021 @mk2

@@ -4,8 +4,6 @@ option go_package = "github.com/fanaticscripter/EggOrganizer/ei";
 
 package ei;
 
-import "aux/common.proto";
-
 message Backup {
     optional string user_id = 1;
     optional string ei_user_id = 18;
@@ -42,6 +40,7 @@ message Backup {
         optional bool user_analytics_enabled = 22 [default = true];
         optional bool user_personalized_ads_enabled = 23 [default = true];
         optional bool low_performance = 10;
+        optional bool auto_stop_fueling = 25;
         optional double last_backup_time = 24;
     }
 
@@ -164,6 +163,7 @@ message Backup {
         repeated uint32 train_length = 21;
         repeated ResearchItem common_research = 18;
         repeated ActiveBoost active_boosts = 22;
+        optional double last_cash_boost_time = 31;
         optional uint32 time_cheats_detected = 23;
         optional double time_cheat_debt = 24;
         optional uint32 boost_tokens_received = 25;
@@ -190,7 +190,7 @@ message Backup {
         optional double last_share_farm_value = 3 [default = 10000000];
         optional double last_share_swarm_farm_value = 4 [default = 10000000];
         optional double last_share_swarm_size = 5 [default = 140];
-        optional uint64 last_prestige_alert_soul_eggs = 10 [default = 45];
+        optional uint64 last_prestige_alert_soul_eggs_DEPRECATED = 10 [default = 45];
         optional uint64 friend_rank = 6;
         optional uint64 friend_rank_pop = 7;
         optional uint64 global_rank = 8;
@@ -208,6 +208,7 @@ message Backup {
 
     optional MyContracts contracts = 13;
     optional ArtifactsDB artifacts_db = 15;
+    repeated string read_mail_ids = 23;
     optional uint64 checksum = 100;
     optional string signature = 101;
 
@@ -252,7 +253,7 @@ message EggIncFirstContactRequest {
     optional string device_id = 5;
     optional string username = 6;
     optional uint32 client_version = 2;
-    optional aux.Platform platform = 3;
+    optional Platform platform = 3;
 }
 
 message EggIncFirstContactResponse {
@@ -271,7 +272,7 @@ message EggIncFirstContactResponse {
 }
 
 message EggIncAdConfig {
-    repeated aux.AdNetwork network_priority = 1;
+    repeated AdNetwork network_priority = 1;
 }
 
 message DailyGiftInfo {
@@ -368,7 +369,8 @@ message ActionKeyValuePair {
 message GenericAction {
     optional string user_id = 1;
     optional string advertising_id = 7;
-    optional float approx_time = 2;
+    optional float approx_time_DEP = 2;
+    optional double approx_time = 8;
     optional string action_name = 3;
     repeated ActionKeyValuePair data = 4;
     optional AppInfo app = 5;
@@ -433,6 +435,8 @@ message BasicRequestInfo {
     optional string version = 3;
     optional string build = 4;
     optional string platform = 5;
+    optional string country = 6;
+    optional string language = 7;
 }
 
 message ContractsRequest {
@@ -470,7 +474,7 @@ message ContractCoopStatusResponse {
         optional int32 rank_change = 8;
         optional bool active = 4;
         optional bool time_cheat_detected = 7;
-        optional aux.Platform platform = 5;
+        optional Platform platform = 5;
         optional string push_id = 9;
         optional uint32 ban_votes = 10;
         optional uint32 boost_tokens = 12;
@@ -510,6 +514,7 @@ message LocalContract {
     optional uint32 num_goals_achieved = 14;
     optional uint32 boosts_used = 12;
     optional uint32 league = 15;
+    optional double last_nag_time = 16;
 }
 
 message MyContracts {
@@ -543,7 +548,7 @@ message CreateCoopRequest {
     optional string user_name = 5;
     optional double soul_power = 8;
     optional uint32 league = 9;
-    optional aux.Platform platform = 6;
+    optional Platform platform = 6;
     optional uint32 client_version = 7;
 }
 
@@ -560,7 +565,7 @@ message JoinCoopRequest {
     optional string user_name = 4;
     optional double soul_power = 8;
     optional uint32 league = 9;
-    optional aux.Platform platform = 5;
+    optional Platform platform = 5;
     optional double seconds_remaining = 11;
     optional uint32 client_version = 7;
 }
@@ -581,7 +586,7 @@ message AutoJoinCoopRequest {
     optional double soul_power = 4;
     optional uint32 league = 8;
     optional double seconds_remaining = 5;
-    optional aux.Platform platform = 6;
+    optional Platform platform = 6;
     optional uint32 client_version = 7;
 }
 
@@ -683,11 +688,59 @@ message ServerGift {
     optional double reward_amount = 5;
 }
 
+message LiveConfig {
+    optional string config_id = 1;
+
+    optional BoostsConfig boosts_config = 2;
+    message BoostsConfig {
+        repeated ItemConfig item_configs = 1;
+        message ItemConfig {
+            optional string boost_id = 1;
+            optional uint32 price = 2;
+            optional uint32 token_price = 3;
+            optional double se_required = 4;
+        }
+
+        optional double cash_boost_cooloff_time = 2;
+    }
+
+    optional GiftConfig gift_config = 3;
+    message GiftConfig {
+        optional double package_interval = 1;
+        optional double video_offer_interval = 2;
+        optional double video_offer_interval_contract = 3;
+        optional double video_offer_interval_piggy_full = 4;
+        optional double video_offer_interval_piggy_extra_full = 5;
+        optional double package_interval_contract = 6;
+        optional double package_interval_piggy_full = 7;
+        optional double package_interval_piggy_extra_full = 8;
+    }
+}
+
+message InGameMail {
+    optional string id = 1;
+    optional string title = 2;
+    optional string date = 8;
+    optional string message = 3;
+    optional string action = 4;
+    optional string url = 5;
+    optional uint32 platform = 7;
+    repeated string builds = 9;
+    optional uint32 min_client_version = 10;
+    optional double gold_tip = 6;
+}
+
+message MailDB {
+    repeated InGameMail mail = 1;
+}
+
 message PeriodicalsResponse {
     optional SalesInfo sales = 1;
     optional EggIncCurrentEvents events = 2;
     optional ContractsResponse contracts = 3;
     repeated ServerGift gifts = 4;
+    optional LiveConfig live_config = 5;
+    optional MailDB mail_bag = 6;
 }
 
 message GetPeriodicalsRequest {
@@ -1080,6 +1133,10 @@ message CleanAccountRequest {
     optional string game_services_id = 2;
 }
 
+message ReturnEDTPayload {
+    optional string ei_user_id = 1;
+}
+
 enum Egg {
     EDIBLE = 1;
     SUPERFOOD = 2;
@@ -1131,4 +1188,24 @@ enum RewardType {
     BOOST = 9;
     BOOST_TOKEN = 10;
     UNKNOWN_REWARD = 100;
+}
+
+enum Platform {
+    IOS = 1;
+    DROID = 2;
+}
+
+enum DeviceFormFactor {
+    PHONE = 1;
+    TABLET = 2;
+}
+
+enum AdNetwork {
+    VUNGLE = 0;
+    CHARTBOOST = 1;
+    AD_COLONY = 2;
+    HYPER_MX = 3;
+    UNITY = 4;
+    FACEBOOK = 5;
+    APPLOVIN = 6;
 }

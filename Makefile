@@ -5,7 +5,7 @@ VERSION := $(shell date +%Y%m%d)-$(shell git rev-parse --short=7 HEAD)
 all: build
 
 build:
-	protoc --go_out=paths=source_relative:. ei/ei.proto aux/common.proto
+	protoc --go_out=paths=source_relative:. ei/ei.proto
 	go build -o EggOrganizer
 
 dist:

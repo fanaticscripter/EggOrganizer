@@ -44,6 +44,11 @@ Demo
 
 <!-- end demo -->
 
+Download
+========
+
+Download the latest zip containing both macOS and Windows executables at https://github.com/fanaticscripter/EggOrganizer/releases.
+
 Installation
 ============
 

@@ -4,9 +4,7 @@ go 1.16
 
 require (
 	github.com/cheggaaa/pb/v3 v3.0.5
-	github.com/golang/protobuf v1.4.3
 	github.com/google/go-cmp v0.5.1 // indirect
-	github.com/google/uuid v1.2.0
 	github.com/mattn/go-colorable v0.1.7 // indirect
 	github.com/pkg/errors v0.9.1
 	github.com/sirupsen/logrus v1.7.0

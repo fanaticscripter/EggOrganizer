@@ -13,8 +13,9 @@ dist:
 	mkdir -p dist/EggOrganizer
 	protoc --go_out=paths=source_relative:. ei/ei.proto
 	$(MAKE) darwin windows
-	install -m644 README.md dist/EggOrganizer/README.txt
+	sed '/-- begin demo --/,/-- end demo --/d' <README.md >dist/EggOrganizer/README.txt
 	install -m644 config.template.toml dist/EggOrganizer/config.toml
+	install -m644 demo.png dist/EggOrganizer/demo.png
 	cd dist && rm -f EggOrganizer-$(VERSION).zip && zip -r EggOrganizer-$(VERSION).zip EggOrganizer
 
 darwin:

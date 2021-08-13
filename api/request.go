@@ -19,13 +19,13 @@ import (
 )
 
 const (
-	ClientVersion uint32 = 33
-	AppVersion    string = "1.21.0"
-	AppBuild      string = "1.21.0.13"
+	ClientVersion uint32 = 34
+	AppVersion    string = "1.21.2"
+	AppBuild      string = "1.21.2.1"
 	Platform      string = "IOS"
 )
 
-const _apiPrefix = "https://afx-2-dot-auxbrainhome.appspot.com"
+const _apiPrefix = "https://www.auxbrain.com"
 
 var _client *http.Client
 

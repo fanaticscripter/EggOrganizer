@@ -2,6 +2,7 @@ package cmd
 
 import (
 	"os"
+	"path/filepath"
 
 	"github.com/pkg/errors"
 	log "github.com/sirupsen/logrus"
@@ -18,7 +19,7 @@ var (
 	_debug   bool
 	_config  *config.Config
 	_rootCmd = &cobra.Command{
-		Use:     "EggOrganizer",
+		Use:     filepath.Base(os.Args[0]),
 		Version: getVersion(),
 	}
 )

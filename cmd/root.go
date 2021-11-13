@@ -56,7 +56,8 @@ func configureLoggingLevel() {
 }
 
 func initConfig() error {
-	viper.SetConfigFile("config.toml")
+	config_path := filepath.Join(filepath.Dir(os.Args[0]), "config.toml")
+	viper.SetConfigFile(config_path)
 	if err := viper.ReadInConfig(); err != nil {
 		return err
 	}

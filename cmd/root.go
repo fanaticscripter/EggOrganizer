@@ -14,9 +14,12 @@ import (
 
 var Version string
 
+const _cfgFileEnvVar = "EGGORGANIZER_CONFIG_FILE"
+
 var (
 	_verbose bool
 	_debug   bool
+	_cfgFile string
 	_config  *config.Config
 	_rootCmd = &cobra.Command{
 		Use:     filepath.Base(os.Args[0]),
@@ -27,6 +30,8 @@ var (
 func init() {
 	cobra.OnInitialize(cobraHouseKeeping, configureLoggingLevel)
 
+	_rootCmd.PersistentFlags().StringVar(&_cfgFile, "config", "",
+		"config file, could also be set through env var "+_cfgFileEnvVar+" (default is config.toml in pwd or the program directory)")
 	_rootCmd.PersistentFlags().BoolVarP(&_verbose, "verbose", "v", false, "enable verbose logging")
 	_rootCmd.PersistentFlags().BoolVar(&_debug, "debug", false, "enable debug logging")
 }
@@ -56,8 +61,18 @@ func configureLoggingLevel() {
 }
 
 func initConfig() error {
-	config_path := filepath.Join(filepath.Dir(os.Args[0]), "config.toml")
-	viper.SetConfigFile(config_path)
+	if _cfgFile != "" {
+		viper.SetConfigFile(_cfgFile)
+	} else if os.Getenv(_cfgFileEnvVar) != "" {
+		viper.SetConfigFile(os.Getenv(_cfgFileEnvVar))
+	} else {
+		viper.AddConfigPath(".")
+		if prog, err := os.Executable(); err == nil {
+			viper.AddConfigPath(filepath.Dir(prog))
+		}
+		viper.SetConfigName("config")
+		viper.SetConfigType("toml")
+	}
 	if err := viper.ReadInConfig(); err != nil {
 		return err
 	}

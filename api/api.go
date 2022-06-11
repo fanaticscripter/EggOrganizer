@@ -11,15 +11,14 @@ func RequestFirstContact(payload *ei.EggIncFirstContactRequest) (*ei.EggIncFirst
 }
 
 func RequestFirstContactWithContext(ctx context.Context, payload *ei.EggIncFirstContactRequest) (*ei.EggIncFirstContactResponse, error) {
+	botName := "EggOrganizer"
+	payload.DeviceId = &botName // This is actually bot_name for /ei/bot_first_contact.
 	if payload.ClientVersion == nil {
 		version := ClientVersion
 		payload.ClientVersion = &version
 	}
-	if payload.DeviceId == nil {
-		payload.DeviceId = payload.EiUserId
-	}
 	resp := &ei.EggIncFirstContactResponse{}
-	err := RequestAuthenticatedWithContext(ctx, "/ei/first_contact", payload, resp)
+	err := RequestWithContext(ctx, "/ei/bot_first_contact", payload, resp)
 	if err != nil {
 		return nil, err
 	}
